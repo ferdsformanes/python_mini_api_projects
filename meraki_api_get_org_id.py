@@ -1,7 +1,7 @@
 import requests
 
 # Your API key
-API_KEY = ''
+API_KEY = ''  # Replace with your actual API key
 
 # Correct base URL for Meraki API
 url = 'https://api.meraki.com/api/v1/organizations'
