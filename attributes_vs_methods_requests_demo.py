@@ -1,4 +1,4 @@
-# Python Attributes vs Methods Explained with `requests` Response Object!
+# Attributes vs Methods in Python (Beginner’s Guide)
 
 import requests
 import urllib3
@@ -20,7 +20,7 @@ print(response.text[:210])   # Attribute: shows first 210 characters of response
 print(response.url)          # Attribute: shows final URL after redirects
 print(response.headers["Content-Type"])  # Attribute: shows content type of the response
 
-# 🛠️ SECTION 3: Methods - These are functions that perform actions.
+#  SECTION 3: Methods - These are functions that perform actions.
 # You call them with parentheses.
 for line in response.iter_lines(decode_unicode=True):  # Method: iterate line by line
     print(line)
@@ -36,7 +36,7 @@ print(callable(response.iter_lines))    # True → it's a method
 print(response.status_code)   # Just prints the value
 print(response.iter_lines)    # Shows it's a bound method object
 
-# SECTION 5: Real-world use case combining attributes and methods
+# SECTION 5: Real-world use case of attributes
 if response.status_code == requests.codes.ok: 
     data = response.text
     print(data[:210])      
