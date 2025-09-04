@@ -1,4 +1,4 @@
-# 📺 VIDEO TITLE: Python Attributes vs Methods Explained with `requests` Response Object!
+# Python Attributes vs Methods Explained with `requests` Response Object!
 
 import requests
 response = requests.get('https://automatetheboringstuff.com/files/rj.txt', verify=False)
@@ -30,4 +30,5 @@ print(response.json)         # Shows it's a bound method
 # 🧪 SECTION 5: Real-world use case combining attributes and methods
 if response.status_code == requests.codes.ok:  # requests.codes.ok is a constant for 200
     data = response.json()                     # Use method to parse JSON
+
     print(data)
