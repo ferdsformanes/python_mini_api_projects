@@ -1,3 +1,5 @@
+# Cisco Catalyst SD-WAN Manager API: Get Device List with Python Requests
+
 import requests
 import urllib3
 
@@ -33,9 +35,13 @@ if resp.status_code != 200:
 
 devices = resp.json()
 
+print(type(devices))
 # Print all top-level keys in the JSON response
-print(devices.keys())
 
 print("Retrieved devices:")
 for d in devices["data"]:
     print(f"- {d['host-name']}, ({d['deviceId']})")
+
+
+# https://devnetsandbox.cisco.com/DevNet/catalog/SD-WAN-Always-On_sd-wan-always-on
+# https://developer.cisco.com/docs/sdwan/authentication/#session-based-authentication
