@@ -1,3 +1,4 @@
+
 # sdwan_exporter_flask.py
 from flask import Flask, Response
 import requests
@@ -5,7 +6,7 @@ import urllib3
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-# Sandbox credentials
+# Cisco SD-WAN Sandbox credentials
 HOST = "https://sandbox-sdwan-2.cisco.com"
 USERNAME = "devnetuser"
 PASSWORD = "RG!_Yw919_83"
@@ -34,12 +35,13 @@ def metrics():
             raise Exception(f"Failed to retrieve devices: {resp.status_code}, {resp.text}")
         devices = resp.json().get("data", [])
         
-        # Count all devices (or optionally only edges)
+        # Count all devices
         up_count = len(devices)
-        # Optional: only edge devices
-        # up_count = sum(1 for d in devices if "cedge" in d.get("host-name", "").lower() or "vedge" in d.get("host-name", "").lower())
         
-        output = f"sdwan_devices_up {up_count}"
+        # Prometheus metric format
+        output = f"# HELP sdwan_devices_up Number of SD-WAN devices\n"
+        output += f"# TYPE sdwan_devices_up gauge\n"
+        output += f"sdwan_devices_up {up_count}\n"
     except Exception as e:
         output = f"# Error: {str(e)}"
     return Response(output, mimetype="text/plain")
